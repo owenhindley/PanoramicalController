@@ -78,7 +78,7 @@ void loop(){
     int index = i + (shiftState ? 0 : NUM_KNOBS);
     int diff = abs(currentState - knobState[index]);
     if (diff > THRESHOLD){
-      //midi_controller_change(0, index, currentState/8); 
+      midi_controller_change(0, index, currentState/8); 
       knobState[index] = currentState;
     }
     
