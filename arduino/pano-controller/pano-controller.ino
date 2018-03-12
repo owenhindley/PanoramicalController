@@ -48,14 +48,28 @@ void loop(){
       // only toggle the LED if the new button state is HIGH
       if (buttonState == HIGH) {
         shiftState = !shiftState;
-//        lastButtonHighTime = millis();
+        lastButtonHighTime = millis();
       }
     }
   }
 
+  if (buttonState && (millis() - lastButtonHighTime) > holdDelay){
+    holdState = true;
+    midi_controller_change(0, HOLD_CONTROLLER, 127); 
+    pix.ShowAll();
+  } else if (holdState && !buttonState) {
+    holdState = false;
+    midi_controller_change(0, HOLD_CONTROLLER, 0); 
+    lastButtonHighTime = millis();
+    
+  }
 
-   pix.ShowLR(shiftState);
+  if (!holdState) {
+    pix.ShowLR(shiftState);
+  }
 
+  
+   
   lastButtonState = reading;
 
   // check & transmit knobs
@@ -64,7 +78,7 @@ void loop(){
     int index = i + (shiftState ? 0 : NUM_KNOBS);
     int diff = abs(currentState - knobState[index]);
     if (diff > THRESHOLD){
-      midi_controller_change(0, index, currentState/8); 
+      //midi_controller_change(0, index, currentState/8); 
       knobState[index] = currentState;
     }
     
