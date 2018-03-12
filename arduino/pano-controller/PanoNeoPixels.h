@@ -11,6 +11,9 @@ class PanoNeoPixels
     void ShowLR(bool lr);
     void ShowAll();
     void Update();
+    void KnightRider(uint16_t speed, uint8_t width, uint32_t color, bool dir);
+    void ClearStrip();
+    uint32_t DimColor(uint32_t color, uint8_t width);
   private:
     Adafruit_NeoPixel _pixels;
     bool _mode;
