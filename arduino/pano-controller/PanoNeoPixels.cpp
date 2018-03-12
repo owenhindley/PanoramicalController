@@ -40,8 +40,8 @@ void PanoNeoPixels::Update(){
    float tgt = _lr ? 1.0f : -1.0f;
    _current += (tgt - _current) * 0.05f;
    
-   float _stateL[] = { 1.0f, 0.2f, 0.1f, 0.0f }; 
-   float _stateR[] = { 0.0f, 0.1f, 0.2f, 1.0f };
+   float _stateL[] = { 1.0f, 0.2f, 0.00f, 0.0f }; 
+   float _stateR[] = { 0.0f, 0.00f, 0.2f, 1.0f };
   
    for (int i = 0; i < NUMPIXELS; i++){
     float valL = (float)255 * _stateL[i];
