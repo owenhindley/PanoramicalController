@@ -2,7 +2,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define PIN       7 // DIGITAL PIN ON BOARD
-#define NUMPIXELS 4 // NUM PIXELS ON STRIP
+#define NUMPIXELS 10 // NUM PIXELS ON STRIP
 
 class PanoNeoPixels
 {

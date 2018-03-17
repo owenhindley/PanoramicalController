@@ -6,6 +6,7 @@
 
 int switchButton = 10;
 int switchButton5v = 2;
+int pots5v = 3;
 int buttonState;
 int lastButtonState = LOW;
 bool shiftState = false;
@@ -29,11 +30,20 @@ void setup(){
   
   Serial.begin(115200);
   pinMode(switchButton5v, OUTPUT);
+  pinMode(pots5v, OUTPUT);
   digitalWrite(switchButton5v, HIGH);
+  digitalWrite(pots5v, HIGH);
   pinMode(switchButton, INPUT);
+  pix.ClearStrip();
+
+  pix.ShowAll();
 }
 
 void loop(){
+
+
+  
+
   // check shift button state with debouncing
   int reading = digitalRead(switchButton);
   if (reading != lastButtonState) {

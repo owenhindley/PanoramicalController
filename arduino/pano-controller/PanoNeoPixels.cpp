@@ -7,7 +7,7 @@
 PanoNeoPixels::PanoNeoPixels()
 {
   _pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-  _pixels.setBrightness(10); // 0-255
+  //_pixels.setBrightness(10); // 0-255
   _pixels.begin();
 }
 
@@ -17,7 +17,7 @@ void PanoNeoPixels::ShowAll(){
 }
 
 void PanoNeoPixels::ShowLR(bool lr){
-  if (_mode != false){
+  if (_mode != false || lr != _lr){
     KnightRider(20,2,0xFF1000,lr);
   }
   _mode = false;
