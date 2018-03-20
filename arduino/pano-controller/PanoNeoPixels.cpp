@@ -18,7 +18,7 @@ void PanoNeoPixels::ShowAll(){
 
 void PanoNeoPixels::ShowLR(bool lr){
   if (_mode != false || lr != _lr){
-    KnightRider(20,2,0xFF1000,lr);
+   KnightRider(20,2,0xFFFFFF,lr);
   }
   _mode = false;
   _lr = lr;
@@ -66,29 +66,11 @@ void PanoNeoPixels::Update(){
 
 void PanoNeoPixels::KnightRider(uint16_t speed, uint8_t width, uint32_t color, bool left){
   uint32_t old_val[NUMPIXELS];
-  if (left){
+  //if (left){
     for (int count = 1; count < NUMPIXELS; count++) {
       _pixels.setPixelColor(count, color);
-      old_val[count] = color;
-      for(int x = count; x > 0; x--) {
-        old_val[x-1] = DimColor(old_val[x-1], width);
-        _pixels.setPixelColor(x-1, old_val[x-1]); 
-      }
-      _pixels.show();
-      delay(speed);
     }
-  } else {
-    for (int count = NUMPIXELS-1; count >= 0; count--){
-      _pixels.setPixelColor(count, color);
-      old_val[count] = color;
-      for(int x = count; x<=NUMPIXELS ;x++) {
-        old_val[x-1] = DimColor(old_val[x-1], width);
-        _pixels.setPixelColor(x+1, old_val[x+1]);
-      }
-      _pixels.show();
-      delay(speed);
-    }
-  }
+  //}
 }
 
 void PanoNeoPixels::ClearStrip(){
